@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  some-postgres-1:
+    image: postgres:image
+    ports:
+      -5532:5532
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: stock_db
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restar: always
+    networks:
+      - spring
+
+  some-postgres-2:
+    image: postgres:image
+    ports:
+      -5532:5532
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ventas_db
+    volumes:
+      - data-postgres:/var/lib/postgresql/data
+    restar: always
+    networks:
+      - spring
