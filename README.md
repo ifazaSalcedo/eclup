@@ -20,4 +20,4 @@ Exponer dos microservicios Ventas y Stock. Establecer la comunicación entre ell
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/usuario/repositorio.git
+   git clone https://github.com/ifazaSalcedo/eclup.git
