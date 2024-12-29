@@ -29,7 +29,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
               return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
         }
-                @Override
+        
+        @ExceptionHandler(RabbitMqNotFountException.class)
+        public ResponseEntity<ErrorDetails> handlerRabbitMqNotFountExceptio(RabbitMqNotFountException exception, WebRequest webRequest){
+            ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(),
+             exception.getMessage(),
+              webRequest.getDescription(false)
+              , "BROKER_ERROR_COMMUNICATION");
+
+              return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+        }
+
+        @Override
         protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                 HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
